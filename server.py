@@ -15,7 +15,7 @@ from typing import Optional
 
 app = web.Application()
 
-PG_DSN = 'postgresql+asyncpg://app:1234@127.0.0.1:5431/app'
+PG_DSN = 'postgresql+asyncpg://app:1234@db:5431/app'
 engine = create_async_engine(PG_DSN)
 Base = declarative_base()
 
@@ -147,4 +147,4 @@ app.add_routes([web.post('/users', UserView),
 app.cleanup_ctx.append(init_orm)
 
 
-web.run_app(app, host='127.0.0.1', port=8080)
+web.run_app(app)
